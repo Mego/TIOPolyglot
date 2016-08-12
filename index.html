@@ -14,7 +14,7 @@
                 var regex = /<li><a href="(.+)">(.+)<\/a><\/li>/g
                 var match;
                 while((match = regex.exec(http.responseText)) !== null) {
-                    TIOLanguages[match[1]] = "http" + match[0];
+                    TIOLanguages[match[2]] = "http" + match[1];
                 }
                 $('#languages').html(TIOLanguages);
             }
