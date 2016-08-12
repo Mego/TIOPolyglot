@@ -38,7 +38,7 @@
         var outputsHTML = '';
         languages.forEach(function(obj) {
                 var url = `${TIOLanguages[obj]}/cgi-bin/backend`;
-                var req = `code=${encodeURIComponent($('#code'))}&input=${encodeURIComponent($('#input'))}`;
+                var req = `code=${encodeURIComponent($('#code').val())}&input=${encodeURIComponent($('#input').val())}`;
                 var http = new XMLHttpRequest();
                 http.open("POST", url, false);
                 http.send(req);
