@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>TIO Polyglot Tester</title>
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script type="text/javascript">
+    var TIOLanguages = {};
+
+    function loadTIOLanguages() {
+        var http = new XMLHttpRequest();
+        http.open("GET", "http://tryitonline.net", true);
+
+        http.onreadystatechange = function() {
+            if (http.status == 200) {
+                var regex = /<li><a href="(.+)">(.+)<\/a><\/li>/g
+                var match;
+                while((match = regex.exec(http.test.slice(33))) !== null) {
+                    TIOLanguages[match[1]] = "http" + match[0];
+                }
+            }
+
+        };
+
+        http.send(data);
+    }
+</script>
+</head>
+<body>
+<div id="languages"></div>
+<script type="text/javascript">
+    loadTIOLanguages();
+    $('#languages').html(TIOLanguages);
+</script>
+</body>
+</html>
