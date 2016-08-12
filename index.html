@@ -16,7 +16,7 @@
                 var langHTML = '';
                 while((match = regex.exec(http.responseText)) !== null) {
                     TIOLanguages[match[2]] = "http" + match[1];
-                    langHTML += `<input type="checkbox" name="language" value="${match[2]}">\r\n`;
+                    langHTML += `<input type="checkbox" name="language" value="${match[2]}">${match[2]}\r\n`;
                 }
                 $('#languages').html(langHTML);
             }
