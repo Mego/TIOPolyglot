@@ -14,11 +14,17 @@
                 var regex = /<li><a href="(.+)">(.+)<\/a><\/li>/g;
                 var match;
                 var langHTML = '';
+                var finalHTML = '';
                 while((match = regex.exec(http.responseText)) !== null) {
                     TIOLanguages[match[2]] = "http" + match[1];
                     langHTML += `<input type="checkbox" name="language" value="${match[2]}">${match[2]}\r\n`;
+                    if(langHTML.length > 120) {
+                        finalHTML += langHTML + '<br>';
+                        langHTML = '';
+                    }
                 }
-                $('#languages').html(langHTML);
+                finalHTML += langHTML + '<br>';
+                $('#languages').html(finalHTML);
             }
 
         };
