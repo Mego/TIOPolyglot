@@ -16,6 +16,7 @@
                 while((match = regex.exec(http.test.slice(33))) !== null) {
                     TIOLanguages[match[1]] = "http" + match[0];
                 }
+                $('#languages').html(TIOLanguages);
             }
 
         };
@@ -24,11 +25,7 @@
     }
 </script>
 </head>
-<body>
+<body onLoad="loadTIOLanguages();">
 <div id="languages"></div>
-<script type="text/javascript">
-    loadTIOLanguages();
-    $('#languages').html(TIOLanguages);
-</script>
 </body>
 </html>
