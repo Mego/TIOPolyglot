@@ -31,6 +31,22 @@
 
         http.send();
     }
+    
+    function runPrograms() {
+        var languages = [];
+        $('input:checked').each(function(){languages.push($(this).val());});
+        var outputsHTML = '';
+        languages.forEach(function(obj) {
+                var url = `http://${TIOLanguages[obj]}.tryitonline.net/cgi-bin/backend`;
+                var req = `code=${encodeURIComponent($('#code'))}&input=${encodeURIComponent($('#input'))}`;
+                var http = new XMLHttpRequest();
+                http.open("POST", url, false);
+                http.send(req);
+                outputsHTML += `<textarea readonly>${http.responseText.substr(33)}</textarea><br>`;
+            }
+        );
+        $('#outputs').html(outputsHTML);
+    }
 </script>
 </head>
 <body onLoad="loadTIOLanguages();">
