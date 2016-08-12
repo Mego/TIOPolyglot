@@ -42,7 +42,7 @@
                 var http = new XMLHttpRequest();
                 http.open("POST", url, false);
                 http.send(req);
-                outputsHTML += `<textarea readonly>${http.responseText.substr(33)}</textarea><br>`;
+                outputsHTML += `${obj}:<br><textarea readonly>${http.responseText.substr(33)}</textarea><br>`;
             }
         );
         $('#outputs').html(outputsHTML);
